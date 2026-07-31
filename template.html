@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C-Field 每日交易简报</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d2e;
+    --border: #2a2d3e;
+    --text: #e1e4ed;
+    --text2: #8b8fa8;
+    --green: #00c853;
+    --red: #ff5252;
+    --blue: #448aff;
+    --accent: #7c4dff;
+    --gold: #ffd740;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 24px;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+  .header { text-align: center; padding: 24px 0 16px; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+  .header h1 { font-size: 24px; font-weight: 700; }
+  .header .meta { color: var(--text2); font-size: 13px; margin-top: 4px; }
+  .header .actions { margin-top: 12px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    padding: 7px 16px; border: 1px solid var(--border); border-radius: 6px;
+    background: var(--card); color: var(--text); cursor: pointer;
+    font-size: 13px; transition: all 0.2s; text-decoration: none;
+  }
+  .btn:hover { border-color: var(--accent); color: #fff; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px; margin-bottom: 20px;
+  }
+  .card h2 {
+    font-size: 16px; font-weight: 600; margin-bottom: 12px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border); color: #fff;
+  }
+
+  /* Text briefing */
+  .briefing {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 28px 32px; margin-bottom: 20px;
+    font-size: 14px; line-height: 1.9; color: #d4d7e0;
+  }
+  .briefing h3 {
+    font-size: 16px; color: #fff; margin-top: 20px; margin-bottom: 10px;
+    padding-bottom: 6px; border-bottom: 1px solid rgba(42,45,62,0.8);
+  }
+  .briefing h3:first-child { margin-top: 0; }
+  .briefing .rank-item {
+    display: flex; justify-content: space-between;
+    padding: 4px 12px; border-radius: 4px; max-width: 500px;
+  }
+  .briefing .rank-item:nth-child(odd) { background: rgba(255,255,255,0.02); }
+  .briefing .rank-num { color: var(--text2); min-width: 24px; }
+  .briefing .rank-name { flex: 1; }
+  .positive { color: var(--green); }
+  .negative { color: var(--red); }
+  .muted { color: var(--text2); font-size: 12px; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 10px 12px; color: var(--text2); font-weight: 500; font-size: 12px; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+  td { padding: 10px 12px; border-bottom: 1px solid rgba(42,45,62,0.5); }
+  tr:hover td { background: rgba(124,77,255,0.04); }
+  .rank-1 { color: var(--gold); font-weight: 700; }
+  .rank-2 { color: #b0bec5; font-weight: 700; }
+  .rank-3 { color: #ff8a65; font-weight: 700; }
+
+  .tag {
+    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin: 1px 2px;
+  }
+  .tag-buy { background: rgba(0,200,83,0.15); color: var(--green); }
+  .tag-sell { background: rgba(255,82,82,0.15); color: var(--red); }
+  .tag-filled { background: rgba(0,200,83,0.1); color: var(--green); border: 1px solid rgba(0,200,83,0.3); }
+  .tag-canceled { background: rgba(255,255,255,0.05); color: var(--text2); }
+  .tag-limit { background: rgba(68,138,255,0.1); color: var(--blue); }
+  .tag-market { background: rgba(255,215,64,0.1); color: var(--gold); }
+  .tag-stop { background: rgba(255,82,82,0.1); color: var(--red); }
+  .order-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 4px 0; font-size: 12px; color: var(--text2); }
+  .editable { cursor: text; }
+  .editable:focus { outline: 1px dashed var(--accent); }
+  .edit-hint { font-size: 11px; color: var(--text2); margin-top: 6px; }
+  .toast { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 8px; font-size: 13px; opacity: 0; transition: opacity 0.3s; z-index: 999; }
+  .toast.show { opacity: 1; }
+  .refresh-hint { font-size: 11px; color: var(--text2); text-align: center; margin-top: 20px; }
+  .collapsible summary { cursor: pointer; color: var(--text2); font-size: 13px; }
+  .stats-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; font-size: 13px; }
+  @media (max-width: 640px) {
+    body { padding: 12px; }
+    .briefing { padding: 16px; }
+    table { font-size: 12px; }
+    th, td { padding: 6px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>C-Field 每日交易简报</h1>
+    <div class="meta" id="updateTime"></div>
+    <div class="actions">
+      <button class="btn primary" onclick="copyBriefing()">复制完整简报文本</button>
+      <button class="btn" onclick="copyAsMarkdown()">复制 Markdown</button>
+      <button class="btn" onclick="window.print()">打印 / 导出 PDF</button>
+    </div>
+  </div>
+
+  <!-- TEXT BRIEFING - top of page -->
+  <div class="briefing" id="textBriefing" contenteditable="true"></div>
+
+  <!-- DATA TABLES - below -->
+  <div id="dataTables"></div>
+
+  <div class="refresh-hint">
+    数据来源: C-Field Guest API | 运行 <code>node build-html.mjs</code> 更新此页面
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const DATA = __DATA_PLACEHOLDER__;
+const $ = (s) => document.querySelector(s);
+
+function fmt(n) {
+  if (n == null || isNaN(n)) return '-';
+  return Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function fmtPct(n) {
+  if (n == null || isNaN(n)) return '-';
+  return (n > 0 ? '+' : '') + Number(n).toFixed(2) + '%';
+}
+function cnSide(side) { return side === 'buy' ? '买入' : side === 'sell' ? '卖出' : side; }
+function cnStatus(s) { return { filled:'已成交', partial_filled:'部分成交', 'new':'未成交', canceled:'已撤单', rejected:'已拒绝' }[s] || s; }
+function cnType(t) { return { limit:'限价', market:'市价', stop:'止损', stop_limit:'止损限价' }[t] || t; }
+function statusClass(s) { return (s === 'filled' || s === 'partial_filled') ? 'tag-filled' : s === 'canceled' ? 'tag-canceled' : ''; }
+
+const r = DATA.json_rankings;
+const ta = DATA.json_activeTeams;
+const d = DATA;
+const dateStr = new Date(d.generatedAt).toLocaleString('zh-CN');
+const dateShort = new Date(d.generatedAt).toISOString().slice(0, 10);
+
+// ── Build text briefing (plain text, under 300 chars) ──
+function buildBriefing() {
+  const anomalies = d.json_anomalies || [];
+  const allRankings = d.json_allRankings || r;
+
+  // Section 1: Daily ranking summary (concise)
+  let briefingText = '';
+  const leader = r[0];
+  briefingText += `今日排名：${leader ? leader.name : '-'} 以 ${fmtPct(leader.pnlPct)} 收益率居首`;
+
+  // Add notable rank movers in the text
+  const bigMovers = anomalies.slice(0, 3);
+  if (bigMovers.length > 0) {
+    briefingText += '；' + bigMovers.map(a => {
+      const dir = a.rankChange > 0 ? '飙升' : '暴跌';
+      return `${a.name} ${dir}${Math.abs(a.rankChange)}名`;
+    }).join('，');
+  }
+  briefingText += '。\n\n';
+
+  // Section 2: Market overview (objective + commentary)
+  briefingText += `美股走势：`;
+  if (d.json_buyRatio < 0.3) {
+    briefingText += `昨夜三大指数集体重挫，科技板块遭遇全面抛售，芯片股领跌，市场避险情绪浓厚。`;
+    briefingText += `从参赛队伍的交易行为来看，各队明显偏向防御，热门标的集中在${d.json_topSymbols && d.json_topSymbols.length > 0 ? d.json_topSymbols.slice(0, 5).map(s => s.symbol).join('、') : '少数个股'}。`;
+    briefingText += `点评：大盘承压环境下，领跑队伍能否守住利润、落后队伍是否趁机抄底，将是后续排名变化的关键变量。`;
+  } else if (d.json_buyRatio > 0.7) {
+    briefingText += `昨夜三大指数集体收涨，科技股领涨，市场风险偏好回升。`;
+    briefingText += `热门标的集中在${d.json_topSymbols && d.json_topSymbols.length > 0 ? d.json_topSymbols.slice(0, 5).map(s => s.symbol).join('、') : '科技成长股'}，各队积极做多。`;
+    briefingText += `点评：市场做多情绪高涨，但需警惕追高风险，尤其是集中押注单一板块的队伍。`;
+  } else {
+    briefingText += `昨夜三大指数涨跌互现，板块分化明显，市场缺乏明确方向。`;
+    briefingText += `热门交易标的分散在 ${d.json_topSymbols && d.json_topSymbols.length > 0 ? d.json_topSymbols.slice(0, 5).map(s => s.symbol).join('、') : '多个板块'}，各队伍策略分化。`;
+    briefingText += `点评：震荡市中，交易节奏和仓位管理比选股方向更重要，频繁调仓的队伍需注意交易成本。`;
+  }
+  briefingText += '\n\n';
+
+  // Section 3: Player behavior highlights (objective + commentary)
+  briefingText += `选手动态：今日共${d.json_orders}笔交易，${d.json_activeTeams ? d.json_activeTeams.length : ta.length}支队伍活跃，买卖比${d.json_buyCount}:${d.json_sellCount}。`;
+  if (d.json_buyRatio < 0.3) briefingText += `市场情绪偏空，各队伍以获利了结为主，整体呈现防守态势。`;
+  else if (d.json_buyRatio > 0.7) briefingText += `市场情绪积极做多，买入占主导，各队伍进攻意愿强。`;
+  else briefingText += `买卖力量相对均衡，多空分歧明显。`;
+
+  // Active teams summary
+  const activeTopTeams = ta.filter(t => {
+    return r.slice(0, 15).find(rk => rk.id === t.id || 'team_0' + rk.id === t.id || 'team_' + rk.id === t.id);
+  });
+  if (activeTopTeams.length > 0) {
+    briefingText += `活跃队伍中，${activeTopTeams.map(t => t.name).join('、')} 等排名靠前的队伍持续操作，`;
+    const highFreq = activeTopTeams.filter(t => t.total >= 10);
+    const lowFreq = activeTopTeams.filter(t => t.total < 5);
+    if (highFreq.length > 0) briefingText += `${highFreq.map(t => t.name).join('、')} 交易频率较高，`;
+    if (lowFreq.length > 0) briefingText += `${lowFreq.map(t => t.name).join('、')} 操作谨慎，`;
+    briefingText += `策略风格差异明显。`;
+  }
+
+  // Highlight unusual behaviors
+  const highCancel = ta.filter(t => t.canceled > t.total * 0.5 && t.total >= 5);
+  const allSellOnly = ta.filter(t => t.buys === 0 && t.sells > 0);
+  const allBuyOnly = ta.filter(t => t.sells === 0 && t.buys > 0);
+
+  if (highCancel.length > 0) {
+    briefingText += `点评：${highCancel.map(t => t.name).join('、')} 撤单率异常偏高，可能因行情波动频繁调整挂单或策略逻辑存在bug，需关注。`;
+  }
+  if (allSellOnly.length > 0) {
+    briefingText += `${allSellOnly.map(t => t.name).join('、')} 纯卖出无一买入，止盈/止损意图明确。`;
+  }
+  if (allBuyOnly.length > 0) {
+    briefingText += `${allBuyOnly.map(t => t.name).join('、')} 纯买入无卖出，逆势做多或逢低建仓。`;
+  }
+
+  // Section 4: Anomaly alerts
+  if (anomalies.length > 0) {
+    briefingText += '\n\n⚠️ 排名异常提醒：\n';
+    anomalies.forEach(a => {
+      const dir = a.rankChange > 0 ? '上升' : '下跌';
+      briefingText += `${a.name} ${dir}${Math.abs(a.rankChange)}名（${(a.reasons || []).join('、') || '原因待分析'}）\n`;
+    });
+  }
+
+  // Convert to HTML with preserved line breaks
+  let html = `<p><strong>C-Field 每日交易简报 — ${dateShort}</strong></p>`;
+  html += `<p class="muted">AI Sandbox Challenge Round2 | ${allRankings.length}支队伍 | ${dateStr}</p>`;
+  html += `<pre style="white-space:pre-wrap;font-family:inherit;line-height:1.9;margin:0;">${briefingText}</pre>`;
+  return html;
+}
+
+// ── Build data tables ──
+function buildDataTables() {
+  // Helper: rank change display
+  function rankChangeHtml(team) {
+    if (team.rankChange === null || team.rankChange === undefined) return '<span class="muted">新</span>';
+    if (team.rankChange > 0) return `<span class="positive">↑${team.rankChange}</span>`;
+    if (team.rankChange < 0) return `<span class="negative">↓${Math.abs(team.rankChange)}</span>`;
+    return '<span class="muted">-</span>';
+  }
+
+  let html = '';
+
+  // ── Anomaly alerts section ──
+  const anomalies = d.json_anomalies || [];
+  if (anomalies.length > 0) {
+    html += `<div class="card" style="border-color: rgba(255,215,64,0.3);">`;
+    html += `<h2 style="color: var(--gold);">⚠️ 排名异常提醒</h2>`;
+    anomalies.forEach(a => {
+      const dir = a.rankChange > 0 ? '上升' : '下跌';
+      const dirClass = a.rankChange > 0 ? 'positive' : 'negative';
+      html += `<div style="margin-bottom:12px;padding:10px 14px;background:rgba(255,215,64,0.03);border-radius:6px;">`;
+      html += `<strong>${a.name}</strong> <span class="${dirClass}">${dir}${Math.abs(a.rankChange)}名</span>`;
+      html += `（${a.prevRank ? '第' + a.prevRank + '名 → ' : ''}第${a.currentRank}名）`;
+      html += `<br><span class="muted">分析：${(a.reasons || []).join('、') || '原因待分析'}</span>`;
+      // Show positions context
+      if (a.positions && a.positions.length > 0) {
+        html += `<br><span class="muted">当前持仓：${a.positions.map(p => {
+          const plStr = Number(p.unrealized_pl) >= 0 ? '+' : '';
+          return `${p.symbol}(${plStr}$${fmt(p.unrealized_pl)})`;
+        }).join('、')}</span>`;
+      }
+      html += `</div>`;
+    });
+    html += `</div>`;
+  }
+
+  html += `<details class="card" open>
+    <summary style="font-size:15px;font-weight:600;color:#fff;cursor:pointer;">📋 排名详情与持仓数据</summary>
+    <div style="margin-top:16px;">
+    <table>
+      <thead><tr><th>#</th><th>变动</th><th>队伍</th><th>绝对收益</th><th>收益率</th></tr></thead>
+      <tbody>${r.slice(0,15).map((t,i) => {
+        const anomalyClass = t.isAnomaly ? ' style="background:rgba(255,215,64,0.06);"' : '';
+        return `
+        <tr${anomalyClass}>
+          <td class="rank-${i < 3 ? i+1 : ''}">${i+1}</td>
+          <td>${rankChangeHtml(t)}</td>
+          <td><strong>${t.name}</strong>${t.isAnomaly ? ' <span style="color:var(--gold);font-size:11px;">⚠</span>' : ''}</td>
+          <td class="${t.pnl >= 0 ? 'positive' : 'negative'}">${t.pnl >= 0 ? '+' : ''}$${fmt(t.pnl)}</td>
+          <td class="${t.pnlPct >= 0 ? 'positive' : 'negative'}">${fmtPct(t.pnlPct)}</td>
+        </tr>`;
+      }).join('')}</tbody>
+    </table>
+    </div>
+  </details>`;
+
+  html += `<details class="card" open>
+    <summary style="font-size:15px;font-weight:600;color:#fff;cursor:pointer;">📈 交易行为明细</summary>
+    <div style="margin-top:16px;">
+    <div class="stats-row">
+      <span>总订单: <strong>${d.json_orders}</strong></span>
+      <span class="positive">买入: <strong>${d.json_buyCount}</strong></span>
+      <span class="negative">卖出: <strong>${d.json_sellCount}</strong></span>
+      <span>买卖比: <strong>${d.json_buyCount}:${d.json_sellCount}</strong></span>
+      <span>限价: <strong>${d.json_limitCount}</strong></span>
+      <span>市价: <strong>${d.json_marketCount}</strong></span>
+      ${Object.entries(d.json_statusMap).map(([s,c]) => `<span>${cnStatus(s)}: <strong>${c}</strong></span>`).join(' ')}
+    </div>
+    <div style="margin-bottom:12px;font-size:13px;">
+      热门标的: ${d.json_topSymbols.map(s => `<span class="tag">${s.symbol} (${s.count})</span>`).join(' ')}
+    </div>
+    <table>
+      <thead><tr><th>队伍</th><th>订单</th><th>方向</th><th>成交/撤单</th><th>标的</th><th>最近操作</th></tr></thead>
+      <tbody>${ta.map(t => `
+        <tr>
+          <td><strong>${t.name}</strong></td>
+          <td>${t.total}笔</td>
+          <td>${t.buys > 0 ? `<span class="tag tag-buy">买${t.buys}</span>` : ''}${t.sells > 0 ? `<span class="tag tag-sell">卖${t.sells}</span>` : ''}</td>
+          <td>${t.filled > 0 ? `<span class="tag tag-filled">成交${t.filled}</span>` : ''}${t.canceled > 0 ? `<span class="tag tag-canceled">撤单${t.canceled}</span>` : ''}</td>
+          <td>${t.symbols.join(', ')}</td>
+          <td>${t.recent.map(o => `
+            <div class="order-row">
+              <span class="muted">${new Date(o.time).toLocaleString('zh-CN',{hour12:false})}</span>
+              <span class="tag ${o.side==='buy'?'tag-buy':'tag-sell'}">${cnSide(o.side)}</span>
+              ${o.symbol} x${o.qty}
+              <span class="tag tag-${o.type}">${cnType(o.type)}</span>
+              <span class="tag ${statusClass(o.status)}">${cnStatus(o.status)}</span>
+            </div>
+          `).join('')}</td>
+        </tr>
+      `).join('')}</tbody>
+    </table>
+    </div>
+  </details>`;
+
+  return html;
+}
+
+// ── Render ──
+$('#updateTime').textContent = '生成时间: ' + dateStr;
+$('#textBriefing').innerHTML = buildBriefing();
+$('#dataTables').innerHTML = buildDataTables();
+
+// ── Copy ──
+function copyBriefing() {
+  const div = $('#textBriefing');
+  let text = div.innerText;
+  // Clean up extra whitespace
+  text = text.replace(/\n{3,}/g, '\n\n');
+  navigator.clipboard.writeText(text.trim()).then(() => showToast('简报已复制到剪贴板'));
+}
+
+function copyAsMarkdown() {
+  let md = '# C-Field 每日交易简报 — ' + dateShort + '\n\n';
+  md += '## TOP 15 收益排名\n\n';
+  md += '| # | 变动 | 队伍 | 绝对收益 | 收益率 | 持仓 |\n';
+  md += '|---|------|------|----------|--------|------|\n';
+  r.slice(0,15).forEach((t,i) => {
+    const change = t.rankChange === null ? '新' : t.rankChange > 0 ? '↑'+t.rankChange : t.rankChange < 0 ? '↓'+Math.abs(t.rankChange) : '-';
+    md += '| ' + (i+1) + ' | ' + change + ' | ' + t.name + ' | ' + (t.pnl>=0?'+':'') + '$' + t.pnl.toFixed(2) + ' | ' + (t.pnlPct>=0?'+':'') + t.pnlPct.toFixed(2) + '% | ' + (t.positions ? t.positions.length : 0) + '只 |\n';
+  });
+
+  // Anomaly alerts
+  const anomalies = d.json_anomalies || [];
+  if (anomalies.length > 0) {
+    md += '\n## ⚠️ 排名异常提醒\n\n';
+    anomalies.forEach(a => {
+      const dir = a.rankChange > 0 ? '上升' : '下跌';
+      md += `- **${a.name}** ${dir}${Math.abs(a.rankChange)}名（${(a.reasons || []).join('、')}）\n`;
+    });
+  }
+
+  md += '\n## 交易分析\n\n';
+  md += '总订单' + d.json_orders + ' | 买' + d.json_buyCount + '/卖' + d.json_sellCount + ' | 限价' + d.json_limitCount + '/市价' + d.json_marketCount + '\n\n';
+  md += '热门标的: ' + d.json_topSymbols.map(s => s.symbol+'('+s.count+')').join(' ') + '\n\n';
+  md += '## 队伍交易\n\n';
+  ta.forEach(t => {
+    md += '- **' + t.name + '**: ' + t.total + '笔 (买' + t.buys + '/卖' + t.sells + ') 成交' + t.filled + ' | ' + t.symbols.join(', ') + '\n';
+  });
+  md += '\n## 简报\n\n' + $('#textBriefing').innerText.trim();
+  navigator.clipboard.writeText(md).then(() => showToast('Markdown 已复制'));
+}
+
+function showToast(msg) {
+  const t = $('#toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+</script>
+</body>
+</html>

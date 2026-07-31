@@ -1,0 +1,572 @@
+{
+  "generatedAt": "2026-07-30T09:34:10.480Z",
+  "competition": {
+    "name": "AI Sandbox Challenge Round2",
+    "status": "live",
+    "startTime": "2026-07-25T16:00:00.000Z",
+    "endTime": "2026-08-28T16:00:00.000Z",
+    "totalTeams": 43,
+    "activeTeams": 6
+  },
+  "marketSummary": {
+    "indices": [
+      {
+        "name": "道琼斯",
+        "change": "-2.18%",
+        "note": "收 51,594"
+      },
+      {
+        "name": "标普500",
+        "change": "-1.51%",
+        "note": "收 7,316"
+      },
+      {
+        "name": "纳斯达克",
+        "change": "-1.80%",
+        "note": "收 24,443"
+      }
+    ],
+    "highlights": [
+      "科技股全面重挫，芯片板块领跌（美光 -9.45%，NVDA -3.47%）",
+      "微软盘后财报超预期暴涨 +9%（Azure +43%，缩减资本开支）",
+      "Meta 盘后暴跌 -7.4%（Q3指引低于预期，AI开支扩大）",
+      "美联储维持利率不变，内部加息分歧加大",
+      "30年期美债收益率飙破 5.2%，创 2007 年以来新高",
+      "资金从 AI 硬件/芯片向企业软件/防御板块轮动"
+    ],
+    "note": "市场数据需手动更新，可通过编辑 data.json 的 marketSummary 字段更新"
+  },
+  "rankings": [
+    {
+      "rank": 1,
+      "name": "衍策金融AI",
+      "id": "39",
+      "pnl": 21484.959999999963,
+      "pnlPct": 2.148495999999996,
+      "equity": 1021484.96,
+      "positionCount": 3,
+      "positions": [
+        {
+          "symbol": "LLY",
+          "name": "LLY",
+          "qty": "1000.0000",
+          "marketValue": "1207900.0000",
+          "unrealizedPl": "9800.0000",
+          "unrealizedPlpc": "0.0082",
+          "side": "long"
+        },
+        {
+          "symbol": "AAPL",
+          "name": "AAPL",
+          "qty": "1010.0000",
+          "marketValue": "342137.5000",
+          "unrealizedPl": "1161.9697",
+          "unrealizedPlpc": "0.0034",
+          "side": "long"
+        },
+        {
+          "symbol": "GOOGL",
+          "name": "GOOGL",
+          "qty": "1000.0000",
+          "marketValue": "335270.0000",
+          "unrealizedPl": "7410.0000",
+          "unrealizedPlpc": "0.0226",
+          "side": "long"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "name": "我说的都队",
+      "id": "37",
+      "pnl": 16486.030000000028,
+      "pnlPct": 1.6486030000000027,
+      "equity": 1016486.03,
+      "positionCount": 1,
+      "positions": [
+        {
+          "symbol": "NOW",
+          "name": "NOW",
+          "qty": "1314.0000",
+          "marketValue": "151819.5600",
+          "unrealizedPl": "1076.8453",
+          "unrealizedPlpc": "0.0071",
+          "side": "long"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "你说的都队",
+      "id": "36",
+      "pnl": 14515.410000000033,
+      "pnlPct": 1.4515410000000033,
+      "equity": 1014515.41,
+      "positionCount": 4,
+      "positions": [
+        {
+          "symbol": "GOOGL",
+          "name": "GOOGL",
+          "qty": "270.0000",
+          "marketValue": "90522.9000",
+          "unrealizedPl": "493.9099",
+          "unrealizedPlpc": "0.0055",
+          "side": "long"
+        },
+        {
+          "symbol": "MSFT",
+          "name": "MSFT",
+          "qty": "205.0000",
+          "marketValue": "87063.5000",
+          "unrealizedPl": "6822.4000",
+          "unrealizedPlpc": "0.0850",
+          "side": "long"
+        },
+        {
+          "symbol": "CRM",
+          "name": "CRM",
+          "qty": "445.0000",
+          "marketValue": "83704.5000",
+          "unrealizedPl": "3106.1000",
+          "unrealizedPlpc": "0.0385",
+          "side": "long"
+        },
+        {
+          "symbol": "META",
+          "name": "META",
+          "qty": "150.0000",
+          "marketValue": "79950.0000",
+          "unrealizedPl": "-10633.8300",
+          "unrealizedPlpc": "-0.1174",
+          "side": "long"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Cyclara",
+      "id": "43",
+      "pnl": 6079.729999999981,
+      "pnlPct": 0.6079729999999981,
+      "equity": 1006079.73,
+      "positionCount": 3,
+      "positions": [
+        {
+          "symbol": "MSFT",
+          "name": "MSFT",
+          "qty": "380.0000",
+          "marketValue": "161386.0000",
+          "unrealizedPl": "12371.5373",
+          "unrealizedPlpc": "0.0830",
+          "side": "long"
+        },
+        {
+          "symbol": "AAPL",
+          "name": "AAPL",
+          "qty": "439.0000",
+          "marketValue": "148711.2500",
+          "unrealizedPl": "1144.6482",
+          "unrealizedPlpc": "0.0078",
+          "side": "long"
+        },
+        {
+          "symbol": "GOOGL",
+          "name": "GOOGL",
+          "qty": "355.0000",
+          "marketValue": "119020.8500",
+          "unrealizedPl": "2598.5744",
+          "unrealizedPlpc": "0.0223",
+          "side": "long"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "agent算的都队",
+      "id": "24",
+      "pnl": 2435.3499999999767,
+      "pnlPct": 0.24353499999999767,
+      "equity": 1002435.35,
+      "positionCount": 1,
+      "positions": [
+        {
+          "symbol": "AAPL",
+          "name": "AAPL",
+          "qty": "695.0000",
+          "marketValue": "235431.2500",
+          "unrealizedPl": "210.3418",
+          "unrealizedPlpc": "0.0009",
+          "side": "long"
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "name": "Moriko 2.0",
+      "id": "22",
+      "pnl": 2150.2399999999907,
+      "pnlPct": 0.21502399999999908,
+      "equity": 1002150.24,
+      "positionCount": 5,
+      "positions": [
+        {
+          "symbol": "TSLA",
+          "name": "TSLA",
+          "qty": "42.0000",
+          "marketValue": "12604.2000",
+          "unrealizedPl": "-132.0418",
+          "unrealizedPlpc": "-0.0104",
+          "side": "long"
+        },
+        {
+          "symbol": "BSP",
+          "name": "BSP",
+          "qty": "100.0000",
+          "marketValue": "3270.0000",
+          "unrealizedPl": "-65.0000",
+          "unrealizedPlpc": "-0.0195",
+          "side": "long"
+        },
+        {
+          "symbol": "META",
+          "name": "META",
+          "qty": "1.0000",
+          "marketValue": "533.0000",
+          "unrealizedPl": "-58.5879",
+          "unrealizedPlpc": "-0.0990",
+          "side": "long"
+        },
+        {
+          "symbol": "MSFT",
+          "name": "MSFT",
+          "qty": "1.0000",
+          "marketValue": "424.4700",
+          "unrealizedPl": "31.5860",
+          "unrealizedPlpc": "0.0804",
+          "side": "long"
+        },
+        {
+          "symbol": "GOOGL",
+          "name": "GOOGL",
+          "qty": "1.0000",
+          "marketValue": "335.2700",
+          "unrealizedPl": "0.3371",
+          "unrealizedPlpc": "0.0010",
+          "side": "long"
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "name": "蜗牛",
+      "id": "30",
+      "pnl": 882.359999999986,
+      "pnlPct": 0.08823599999999861,
+      "equity": 1000882.36,
+      "positionCount": 0,
+      "positions": []
+    },
+    {
+      "rank": 8,
+      "name": "GTC-Team",
+      "id": "45",
+      "pnl": 0,
+      "pnlPct": 0,
+      "equity": 1000000,
+      "positionCount": 0,
+      "positions": []
+    },
+    {
+      "rank": 9,
+      "name": "自由意志",
+      "id": "44",
+      "pnl": 0,
+      "pnlPct": 0,
+      "equity": 1000000,
+      "positionCount": 0,
+      "positions": []
+    },
+    {
+      "rank": 10,
+      "name": "牛回速归",
+      "id": "42",
+      "pnl": 0,
+      "pnlPct": 0,
+      "equity": 1000000,
+      "positionCount": 0,
+      "positions": []
+    }
+  ],
+  "tradingActivity": {
+    "totalOrders": 80,
+    "buyCount": 0,
+    "sellCount": 80,
+    "buyRatio": 0,
+    "limitCount": 73,
+    "marketCount": 6,
+    "topSymbols": [
+      {
+        "symbol": "MSFT",
+        "count": 47
+      },
+      {
+        "symbol": "META",
+        "count": 7
+      },
+      {
+        "symbol": "NFLX",
+        "count": 5
+      },
+      {
+        "symbol": "NTES",
+        "count": 3
+      },
+      {
+        "symbol": "CRM",
+        "count": 3
+      },
+      {
+        "symbol": "AAPL",
+        "count": 2
+      },
+      {
+        "symbol": "LLY",
+        "count": 2
+      },
+      {
+        "symbol": "KO",
+        "count": 2
+      },
+      {
+        "symbol": "HPE",
+        "count": 1
+      },
+      {
+        "symbol": "SIMO",
+        "count": 1
+      }
+    ],
+    "statusBreakdown": {
+      "new": 15,
+      "filled": 3,
+      "canceled": 61,
+      "pending_cancel": 1
+    },
+    "activeTeams": [
+      {
+        "id": "11",
+        "name": "吴量小队",
+        "total": 55,
+        "buys": 0,
+        "sells": 55,
+        "filled": 0,
+        "canceled": 55,
+        "symbols": [
+          "MSFT",
+          "NFLX",
+          "NOW",
+          "CRM",
+          "AAPL"
+        ],
+        "recent": [
+          {
+            "time": "2026-07-30T08:00:17.802Z",
+            "side": "sell",
+            "symbol": "MSFT",
+            "qty": "62.0000",
+            "type": "limit",
+            "status": "canceled",
+            "filled_qty": "0.0000"
+          },
+          {
+            "time": "2026-07-30T08:00:17.771Z",
+            "side": "sell",
+            "symbol": "MSFT",
+            "qty": "62.0000",
+            "type": "limit",
+            "status": "canceled",
+            "filled_qty": "0.0000"
+          },
+          {
+            "time": "2026-07-30T08:00:17.760Z",
+            "side": "sell",
+            "symbol": "NFLX",
+            "qty": "1350.0000",
+            "type": "limit",
+            "status": "canceled",
+            "filled_qty": "0.0000"
+          }
+        ]
+      },
+      {
+        "id": "33",
+        "name": "JMS AI",
+        "total": 13,
+        "buys": 0,
+        "sells": 13,
+        "filled": 0,
+        "canceled": 4,
+        "symbols": [
+          "META",
+          "AAPL",
+          "LLY",
+          "CRM",
+          "GOOGL",
+          "KO"
+        ],
+        "recent": [
+          {
+            "time": "2026-07-30T08:18:30.744Z",
+            "side": "sell",
+            "symbol": "META",
+            "qty": "91.0000",
+            "type": "limit",
+            "status": "new",
+            "filled_qty": "0.0000"
+          },
+          {
+            "time": "2026-07-30T08:00:35.210Z",
+            "side": "sell",
+            "symbol": "AAPL",
+            "qty": "100.0000",
+            "type": "limit",
+            "status": "new",
+            "filled_qty": "0.0000"
+          },
+          {
+            "time": "2026-07-30T08:00:35.207Z",
+            "side": "sell",
+            "symbol": "LLY",
+            "qty": "40.0000",
+            "type": "limit",
+            "status": "new",
+            "filled_qty": "0.0000"
+          }
+        ]
+      },
+      {
+        "id": "18",
+        "name": "AITrader-Cathie",
+        "total": 9,
+        "buys": 0,
+        "sells": 9,
+        "filled": 3,
+        "canceled": 2,
+        "symbols": [
+          "HPE",
+          "SIMO",
+          "ASML",
+          "NTES",
+          "JBL",
+          "CSCO",
+          "TSM"
+        ],
+        "recent": [
+          {
+            "time": "2026-07-30T09:33:29.138Z",
+            "side": "sell",
+            "symbol": "HPE",
+            "qty": "3910.0000",
+            "type": "limit",
+            "status": "new",
+            "filled_qty": "0.0000"
+          },
+          {
+            "time": "2026-07-30T09:32:38.630Z",
+            "side": "sell",
+            "symbol": "SIMO",
+            "qty": "998.0000",
+            "type": "limit",
+            "status": "new",
+            "filled_qty": "0.0000"
+          },
+          {
+            "time": "2026-07-30T09:31:52.304Z",
+            "side": "sell",
+            "symbol": "ASML",
+            "qty": "164.0000",
+            "type": "limit",
+            "status": "filled",
+            "filled_qty": "164.0000"
+          }
+        ]
+      },
+      {
+        "id": "25",
+        "name": "QuantClaw",
+        "total": 1,
+        "buys": 0,
+        "sells": 1,
+        "filled": 0,
+        "canceled": 0,
+        "symbols": [
+          "NVDA"
+        ],
+        "recent": [
+          {
+            "time": "2026-07-30T08:00:13.869Z",
+            "side": "sell",
+            "symbol": "NVDA",
+            "qty": "499.0000",
+            "type": "stop",
+            "status": "new",
+            "filled_qty": "0.0000"
+          }
+        ]
+      },
+      {
+        "id": "36",
+        "name": "你说的都队",
+        "total": 1,
+        "buys": 0,
+        "sells": 1,
+        "filled": 0,
+        "canceled": 0,
+        "symbols": [
+          "META"
+        ],
+        "recent": [
+          {
+            "time": "2026-07-30T08:00:17.895Z",
+            "side": "sell",
+            "symbol": "META",
+            "qty": "150.0000",
+            "type": "limit",
+            "status": "new",
+            "filled_qty": "0.0000"
+          }
+        ]
+      },
+      {
+        "id": "46",
+        "name": "prika100",
+        "total": 1,
+        "buys": 0,
+        "sells": 1,
+        "filled": 0,
+        "canceled": 0,
+        "symbols": [
+          "META"
+        ],
+        "recent": [
+          {
+            "time": "2026-07-30T08:00:11.936Z",
+            "side": "sell",
+            "symbol": "META",
+            "qty": "200.0000",
+            "type": "market",
+            "status": "new",
+            "filled_qty": "0.0000"
+          }
+        ]
+      }
+    ]
+  },
+  "commentary": {
+    "auto": [
+      "今日市场情绪极度偏空，全部为卖出操作，各队伍一致获利了结。",
+      "限价单占比极高，说明各队不急于市价成交，在等待更好的价格。",
+      "吴量小队 撤单率异常高，可能存在策略测试或风控频繁触发。"
+    ]
+  }
+}
