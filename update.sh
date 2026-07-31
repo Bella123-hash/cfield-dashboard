@@ -1,5 +1,15 @@
 #!/bin/bash
 export PATH="$HOME/.npm-global/bin:$PATH"
 cd "$HOME/cfield-dashboard"
+
+# Generate report
 node build-html.mjs >> update.log 2>&1
-echo "Updated at $(date)" >> update.log
+
+# Push to GitHub (auto-updates GitHub Pages)
+unset https_proxy http_proxy HTTPS_PROXY HTTP_PROXY
+git add index.html data.json rankings-snapshot.json update.log
+git commit -m "Daily update: $(date +%Y-%m-%d)" >> update.log 2>&1
+git push >> update.log 2>&1
+
+echo "Updated & pushed at $(date)" >> update.log
+echo "Done: https://bella123-hash.github.io/cfield-dashboard/"
