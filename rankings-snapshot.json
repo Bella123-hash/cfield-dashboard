@@ -1,5 +1,5 @@
 {
-  "date": "2026-08-03T01:00:08.865Z",
+  "date": "2026-08-05T01:09:06.890Z",
   "rankings": [
     {
       "id": "31",
@@ -7,33 +7,33 @@
       "rank": 1
     },
     {
-      "id": "36",
-      "name": "你说的都队",
+      "id": "18",
+      "name": "AITrader-Cathie",
       "rank": 2
-    },
-    {
-      "id": "43",
-      "name": "Cyclara",
-      "rank": 3
     },
     {
       "id": "17",
       "name": "AITrader-Ray",
-      "rank": 4
+      "rank": 3
     },
     {
       "id": "16",
       "name": "AITrader-Warren",
+      "rank": 4
+    },
+    {
+      "id": "43",
+      "name": "Cyclara",
       "rank": 5
+    },
+    {
+      "id": "36",
+      "name": "你说的都队",
+      "rank": 6
     },
     {
       "id": "30",
       "name": "蜗牛",
-      "rank": 6
-    },
-    {
-      "id": "18",
-      "name": "AITrader-Cathie",
       "rank": 7
     },
     {
@@ -47,13 +47,13 @@
       "rank": 9
     },
     {
-      "id": "22",
-      "name": "Moriko 2.0",
+      "id": "12",
+      "name": "ZGNB",
       "rank": 10
     },
     {
-      "id": "9",
-      "name": "Finbrain",
+      "id": "7",
+      "name": "恒如",
       "rank": 11
     },
     {
@@ -62,153 +62,153 @@
       "rank": 12
     },
     {
-      "id": "45",
-      "name": "GTC-Team",
+      "id": "46",
+      "name": "prika100",
       "rank": 13
     },
     {
-      "id": "44",
-      "name": "自由意志",
+      "id": "9",
+      "name": "Finbrain",
       "rank": 14
-    },
-    {
-      "id": "42",
-      "name": "牛回速归",
-      "rank": 15
-    },
-    {
-      "id": "40",
-      "name": "NinjaTeam",
-      "rank": 16
-    },
-    {
-      "id": "38",
-      "name": "Little Boy",
-      "rank": 17
-    },
-    {
-      "id": "32",
-      "name": "零帧起手",
-      "rank": 18
-    },
-    {
-      "id": "29",
-      "name": "九子登科",
-      "rank": 19
-    },
-    {
-      "id": "28",
-      "name": "不是倒一就算胜利",
-      "rank": 20
-    },
-    {
-      "id": "27",
-      "name": "事不过三",
-      "rank": 21
-    },
-    {
-      "id": "21",
-      "name": "应许之地",
-      "rank": 22
-    },
-    {
-      "id": "15",
-      "name": "肖申克的AI",
-      "rank": 23
-    },
-    {
-      "id": "14",
-      "name": "ai说啥就是啥",
-      "rank": 24
-    },
-    {
-      "id": "13",
-      "name": "燕启",
-      "rank": 25
-    },
-    {
-      "id": "10",
-      "name": "抢戏",
-      "rank": 26
-    },
-    {
-      "id": "41",
-      "name": "永远快乐",
-      "rank": 27
     },
     {
       "id": "34",
       "name": "尔东陈",
+      "rank": 15
+    },
+    {
+      "id": "27",
+      "name": "事不过三",
+      "rank": 16
+    },
+    {
+      "id": "45",
+      "name": "GTC-Team",
+      "rank": 17
+    },
+    {
+      "id": "44",
+      "name": "自由意志",
+      "rank": 18
+    },
+    {
+      "id": "42",
+      "name": "牛回速归",
+      "rank": 19
+    },
+    {
+      "id": "40",
+      "name": "NinjaTeam",
+      "rank": 20
+    },
+    {
+      "id": "38",
+      "name": "Little Boy",
+      "rank": 21
+    },
+    {
+      "id": "32",
+      "name": "零帧起手",
+      "rank": 22
+    },
+    {
+      "id": "29",
+      "name": "九子登科",
+      "rank": 23
+    },
+    {
+      "id": "28",
+      "name": "不是倒一就算胜利",
+      "rank": 24
+    },
+    {
+      "id": "21",
+      "name": "应许之地",
+      "rank": 25
+    },
+    {
+      "id": "15",
+      "name": "肖申克的AI",
+      "rank": 26
+    },
+    {
+      "id": "14",
+      "name": "ai说啥就是啥",
+      "rank": 27
+    },
+    {
+      "id": "13",
+      "name": "燕启",
       "rank": 28
+    },
+    {
+      "id": "10",
+      "name": "抢戏",
+      "rank": 29
+    },
+    {
+      "id": "41",
+      "name": "永远快乐",
+      "rank": 30
+    },
+    {
+      "id": "22",
+      "name": "Moriko 2.0",
+      "rank": 31
     },
     {
       "id": "26",
       "name": "天台管理员",
-      "rank": 29
-    },
-    {
-      "id": "7",
-      "name": "恒如",
-      "rank": 30
+      "rank": 32
     },
     {
       "id": "25",
       "name": "QuantClaw",
-      "rank": 31
-    },
-    {
-      "id": "24",
-      "name": "agent算的都队",
-      "rank": 32
-    },
-    {
-      "id": "12",
-      "name": "ZGNB",
       "rank": 33
-    },
-    {
-      "id": "11",
-      "name": "吴量小队",
-      "rank": 34
-    },
-    {
-      "id": "19",
-      "name": "小目标",
-      "rank": 35
-    },
-    {
-      "id": "46",
-      "name": "prika100",
-      "rank": 36
     },
     {
       "id": "33",
       "name": "JMS AI",
-      "rank": 37
+      "rank": 34
     },
     {
-      "id": "2",
-      "name": "FredTeam",
-      "rank": 38
+      "id": "24",
+      "name": "agent算的都队",
+      "rank": 35
     },
     {
-      "id": "39",
-      "name": "衍策金融AI",
-      "rank": 39
-    },
-    {
-      "id": "35",
-      "name": "ZGJW",
-      "rank": 40
+      "id": "11",
+      "name": "吴量小队",
+      "rank": 36
     },
     {
       "id": "3",
       "name": "想吃螺蛳粉",
-      "rank": 41
+      "rank": 37
+    },
+    {
+      "id": "19",
+      "name": "小目标",
+      "rank": 38
+    },
+    {
+      "id": "2",
+      "name": "FredTeam",
+      "rank": 39
     },
     {
       "id": "4",
       "name": "OpenClaw-Mark",
+      "rank": 40
+    },
+    {
+      "id": "35",
+      "name": "ZGJW",
+      "rank": 41
+    },
+    {
+      "id": "39",
+      "name": "衍策金融AI",
       "rank": 42
     },
     {
