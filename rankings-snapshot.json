@@ -1,5 +1,5 @@
 {
-  "date": "2026-08-06T02:34:17.810Z",
+  "date": "2026-08-08T02:14:15.813Z",
   "rankings": [
     {
       "id": "18",
@@ -7,33 +7,33 @@
       "rank": 1
     },
     {
-      "id": "31",
-      "name": "韭菜",
-      "rank": 2
-    },
-    {
       "id": "17",
       "name": "AITrader-Ray",
-      "rank": 3
-    },
-    {
-      "id": "43",
-      "name": "Cyclara",
-      "rank": 4
-    },
-    {
-      "id": "36",
-      "name": "你说的都队",
-      "rank": 5
+      "rank": 2
     },
     {
       "id": "16",
       "name": "AITrader-Warren",
-      "rank": 6
+      "rank": 3
     },
     {
       "id": "30",
       "name": "蜗牛",
+      "rank": 4
+    },
+    {
+      "id": "43",
+      "name": "Cyclara",
+      "rank": 5
+    },
+    {
+      "id": "12",
+      "name": "ZGNB",
+      "rank": 6
+    },
+    {
+      "id": "36",
+      "name": "你说的都队",
       "rank": 7
     },
     {
@@ -47,8 +47,8 @@
       "rank": 9
     },
     {
-      "id": "12",
-      "name": "ZGNB",
+      "id": "7",
+      "name": "恒如",
       "rank": 10
     },
     {
@@ -57,13 +57,13 @@
       "rank": 11
     },
     {
-      "id": "7",
-      "name": "恒如",
+      "id": "9",
+      "name": "Finbrain",
       "rank": 12
     },
     {
-      "id": "9",
-      "name": "Finbrain",
+      "id": "22",
+      "name": "Moriko 2.0",
       "rank": 13
     },
     {
@@ -137,33 +137,33 @@
       "rank": 27
     },
     {
-      "id": "25",
-      "name": "QuantClaw",
-      "rank": 28
-    },
-    {
-      "id": "26",
-      "name": "天台管理员",
-      "rank": 29
-    },
-    {
       "id": "46",
       "name": "prika100",
-      "rank": 30
-    },
-    {
-      "id": "34",
-      "name": "尔东陈",
-      "rank": 31
+      "rank": 28
     },
     {
       "id": "24",
       "name": "agent算的都队",
-      "rank": 32
+      "rank": 29
+    },
+    {
+      "id": "26",
+      "name": "天台管理员",
+      "rank": 30
+    },
+    {
+      "id": "39",
+      "name": "衍策金融AI",
+      "rank": 31
     },
     {
       "id": "41",
       "name": "永远快乐",
+      "rank": 32
+    },
+    {
+      "id": "34",
+      "name": "尔东陈",
       "rank": 33
     },
     {
@@ -172,28 +172,28 @@
       "rank": 34
     },
     {
-      "id": "39",
-      "name": "衍策金融AI",
+      "id": "11",
+      "name": "吴量小队",
       "rank": 35
-    },
-    {
-      "id": "22",
-      "name": "Moriko 2.0",
-      "rank": 36
     },
     {
       "id": "19",
       "name": "小目标",
-      "rank": 37
-    },
-    {
-      "id": "11",
-      "name": "吴量小队",
-      "rank": 38
+      "rank": 36
     },
     {
       "id": "2",
       "name": "FredTeam",
+      "rank": 37
+    },
+    {
+      "id": "25",
+      "name": "QuantClaw",
+      "rank": 38
+    },
+    {
+      "id": "35",
+      "name": "ZGJW",
       "rank": 39
     },
     {
@@ -202,8 +202,8 @@
       "rank": 40
     },
     {
-      "id": "35",
-      "name": "ZGJW",
+      "id": "31",
+      "name": "韭菜",
       "rank": 41
     },
     {
